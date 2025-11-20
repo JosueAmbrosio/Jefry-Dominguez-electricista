@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Electric Dark Theme - Inspired by circuit boards and energy */
+    --background: 215 30% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 25% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Electric Blue */
+    --primary: 215 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 215 100% 65%;
+    --primary-dark: 215 100% 45%;
+
+    /* Secondary - Energy Yellow */
+    --secondary: 51 100% 50%;
+    --secondary-foreground: 215 100% 10%;
+    --secondary-light: 51 100% 60%;
+    --secondary-dark: 51 100% 40%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 10% 70%;
+
+    --accent: 51 100% 50%;
+    --accent-foreground: 215 100% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 15%;
+    --ring: 215 100% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(215 100% 55%), hsl(215 100% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(51 100% 50%), hsl(51 100% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 100% 20%) 0%, hsl(215 100% 8%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(215 100% 55%), hsl(51 100% 50%));
+    --gradient-electric: linear-gradient(135deg, hsl(215 100% 55%) 0%, hsl(195 100% 50%) 50%, hsl(51 100% 50%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 2px 20px rgba(0, 100, 255, 0.15);
+    --shadow-medium: 0 4px 30px rgba(0, 100, 255, 0.25);
+    --shadow-strong: 0 10px 40px rgba(0, 100, 255, 0.35);
+    --shadow-glow: 0 0 40px rgba(0, 140, 255, 0.4);
+    --shadow-yellow-glow: 0 0 30px rgba(247, 208, 0, 0.5);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 100% 15%;
+    --sidebar-primary: 215 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 20% 95%;
+    --sidebar-accent-foreground: 215 100% 15%;
+    --sidebar-border: 215 20% 90%;
+    --sidebar-ring: 215 100% 40%;
+  }
+
+  .dark {
+    /* Even darker for explicit dark mode */
+    --background: 215 35% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 215 30% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --primary: 215 100% 60%;
+    --primary-light: 215 100% 70%;
+    --primary-dark: 215 100% 50%;
+
+    --secondary: 51 100% 55%;
+    --secondary-light: 51 100% 65%;
+    --secondary-dark: 51 100% 45%;
+
+    --muted: 215 20% 15%;
+    --muted-foreground: 215 10% 75%;
+
+    --border: 215 20% 18%;
+    --input: 215 20% 12%;
+
+    --gradient-electric: linear-gradient(135deg, hsl(215 100% 60%) 0%, hsl(195 100% 55%) 50%, hsl(51 100% 55%) 100%);
+
+    --sidebar-background: 215 100% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 215 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 20% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 215 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(215 100% 55% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(51 100% 50% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(195 100% 50% / 0.03) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-electric {
+    background: var(--gradient-electric);
+  }
+
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-electric {
+    background: var(--gradient-electric);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-yellow-glow {
+    box-shadow: var(--shadow-yellow-glow);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+
+  /* Circuit pattern background */
+  .circuit-pattern {
+    background-color: hsl(var(--background));
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+  }
+
+  .circuit-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.08) 2px, transparent 2px);
+    background-size: 100px 100px;
+    pointer-events: none;
+  }
+
+  /* Electric glow effect */
+  .electric-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .electric-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%);
+    animation: pulse-glow 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Energy lines */
+  .energy-lines {
+    background-image: 
+      linear-gradient(45deg, hsl(var(--primary) / 0.1) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--primary) / 0.1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--secondary) / 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--secondary) / 0.05) 75%);
+    background-size: 100px 100px;
+    background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
+  }
+}
